@@ -11,11 +11,7 @@ interface Point3D {
   color: string;
 }
 
-interface Background3DProps {
-  isDark?: boolean;
-}
-
-export const Background3D: React.FC<Background3DProps> = ({ isDark = false }) => {
+export const Background3D: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -42,16 +38,16 @@ export const Background3D: React.FC<Background3DProps> = ({ isDark = false }) =>
     const handleMouseMove = (e: MouseEvent) => {
       const halfW = width / 2;
       const halfH = height / 2;
-      targetRotY = ((e.clientX - halfW) / halfW) * 0.35;
-      targetRotX = -((e.clientY - halfH) / halfH) * 0.35;
+      targetRotY = ((e.clientX - halfW) / halfW) * 0.3;
+      targetRotX = -((e.clientY - halfH) / halfH) * 0.3;
     };
 
     const handleTouchMove = (e: TouchEvent) => {
       if (e.touches.length > 0) {
         const halfW = width / 2;
         const halfH = height / 2;
-        targetRotY = ((e.touches[0].clientX - halfW) / halfW) * 0.25;
-        targetRotX = -((e.touches[0].clientY - halfH) / halfH) * 0.25;
+        targetRotY = ((e.touches[0].clientX - halfW) / halfW) * 0.2;
+        targetRotX = -((e.touches[0].clientY - halfH) / halfH) * 0.2;
       }
     };
 
@@ -59,12 +55,10 @@ export const Background3D: React.FC<Background3DProps> = ({ isDark = false }) =>
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('touchmove', handleTouchMove);
 
-    // Create 3D points
+    // Create 3D points in bright, vibrant, cheerful hues
     const pointsCount = 75;
     const points: Point3D[] = [];
-    const colorsLight = ['#4f46e5', '#0284c7', '#7c3aed', '#059669', '#2563eb'];
-    const colorsDark = ['#6366f1', '#06b6d4', '#818cf8', '#38bdf8', '#4f46e5'];
-    const colors = isDark ? colorsDark : colorsLight;
+    const colors = ['#4f46e5', '#0284c7', '#7c3aed', '#059669', '#2563eb', '#e11d48'];
 
     for (let i = 0; i < pointsCount; i++) {
       points.push({
@@ -88,28 +82,16 @@ export const Background3D: React.FC<Background3DProps> = ({ isDark = false }) =>
       const cx = width / 2;
       const cy = height / 2;
 
-      if (isDark) {
-        ctx.fillStyle = '#06080e';
-        ctx.fillRect(0, 0, width, height);
+      // Pure Bright Canvas Background
+      ctx.fillStyle = '#f8fafc';
+      ctx.fillRect(0, 0, width, height);
 
-        const grad = ctx.createRadialGradient(cx, cy, 50, cx, cy, Math.max(width, height) * 0.8);
-        grad.addColorStop(0, 'rgba(99, 102, 241, 0.08)');
-        grad.addColorStop(0.5, 'rgba(6, 182, 212, 0.04)');
-        grad.addColorStop(1, 'rgba(6, 8, 14, 0.95)');
-        ctx.fillStyle = grad;
-        ctx.fillRect(0, 0, width, height);
-      } else {
-        // Bright radiant light mode canvas
-        ctx.fillStyle = '#f8fafc';
-        ctx.fillRect(0, 0, width, height);
-
-        const grad = ctx.createRadialGradient(cx, cy, 50, cx, cy, Math.max(width, height) * 0.8);
-        grad.addColorStop(0, 'rgba(238, 242, 255, 0.8)');
-        grad.addColorStop(0.5, 'rgba(240, 249, 255, 0.6)');
-        grad.addColorStop(1, 'rgba(248, 250, 252, 0.95)');
-        ctx.fillStyle = grad;
-        ctx.fillRect(0, 0, width, height);
-      }
+      const grad = ctx.createRadialGradient(cx, cy, 50, cx, cy, Math.max(width, height) * 0.8);
+      grad.addColorStop(0, 'rgba(238, 242, 255, 0.7)');
+      grad.addColorStop(0.5, 'rgba(240, 249, 255, 0.5)');
+      grad.addColorStop(1, 'rgba(248, 250, 252, 0.9)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, width, height);
 
       const cosY = Math.cos(rotY);
       const sinY = Math.sin(rotY);
@@ -143,8 +125,8 @@ export const Background3D: React.FC<Background3DProps> = ({ isDark = false }) =>
         }
       }
 
-      // Constellation lines
-      ctx.lineWidth = isDark ? 0.75 : 0.85;
+      // Constellation lines in soft pastel indigo
+      ctx.lineWidth = 0.85;
       for (let i = 0; i < projected.length; i++) {
         for (let j = i + 1; j < projected.length; j++) {
           const p1 = projected[i];
@@ -154,10 +136,8 @@ export const Background3D: React.FC<Background3DProps> = ({ isDark = false }) =>
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < 130) {
-            const alpha = (1 - dist / 130) * (isDark ? 0.25 : 0.22);
-            ctx.strokeStyle = isDark
-              ? `rgba(99, 102, 241, ${alpha})`
-              : `rgba(79, 70, 229, ${alpha})`;
+            const alpha = (1 - dist / 130) * 0.22;
+            ctx.strokeStyle = `rgba(79, 70, 229, ${alpha})`;
             ctx.beginPath();
             ctx.moveTo(p1.px, p1.py);
             ctx.lineTo(p2.px, p2.py);
@@ -166,7 +146,7 @@ export const Background3D: React.FC<Background3DProps> = ({ isDark = false }) =>
         }
       }
 
-      // Draw particles
+      // Draw particles with soft glow rings
       for (let i = 0; i < projected.length; i++) {
         const { px, py, scale, p } = projected[i];
         const r = Math.max(0.6, p.size * scale);
@@ -176,9 +156,9 @@ export const Background3D: React.FC<Background3DProps> = ({ isDark = false }) =>
         ctx.fill();
 
         ctx.fillStyle = p.color;
-        ctx.globalAlpha = isDark ? 0.2 : 0.15;
+        ctx.globalAlpha = 0.15;
         ctx.beginPath();
-        ctx.arc(px, py, r * 2.2, 0, Math.PI * 2);
+        ctx.arc(px, py, r * 2.4, 0, Math.PI * 2);
         ctx.fill();
         ctx.globalAlpha = 1.0;
       }
@@ -194,12 +174,12 @@ export const Background3D: React.FC<Background3DProps> = ({ isDark = false }) =>
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('touchmove', handleTouchMove);
     };
-  }, [isDark]);
+  }, []);
 
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0 opacity-80 transition-opacity duration-500"
+      className="fixed inset-0 pointer-events-none z-0 opacity-80"
       aria-hidden="true"
     />
   );

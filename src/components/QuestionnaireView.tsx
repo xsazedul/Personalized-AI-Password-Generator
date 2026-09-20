@@ -56,13 +56,13 @@ export const QuestionnaireView: React.FC<QuestionnaireViewProps> = ({
       {/* Top Header & Progress Stepper */}
       <div className="mb-6">
         
-        <div className="flex items-center justify-between text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-2.5 font-medium">
+        <div className="flex items-center justify-between text-xs sm:text-sm text-slate-600 mb-2.5 font-medium">
           <div className="flex items-center gap-2">
-            <span className="px-3 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-500/15 border border-indigo-200 dark:border-indigo-500/30 text-indigo-700 dark:text-indigo-300 font-bold shadow-sm">
+            <span className="px-3 py-1 rounded-lg bg-indigo-50 border border-indigo-200 text-indigo-700 font-bold shadow-sm">
               {tStepper.stepOf[language]} {currentIndex + 1} {tStepper.ofTotal[language]} {totalSteps}
             </span>
-            <span className="hidden sm:inline text-slate-400 dark:text-slate-500">•</span>
-            <span className="hidden sm:inline text-slate-600 dark:text-slate-400">
+            <span className="hidden sm:inline text-slate-400">•</span>
+            <span className="hidden sm:inline text-slate-600 font-semibold">
               {Math.round(progressPercent)}% {language === 'en' ? 'Completed' : 'সম্পন্ন'}
             </span>
           </div>
@@ -70,7 +70,7 @@ export const QuestionnaireView: React.FC<QuestionnaireViewProps> = ({
           {/* Restart Button */}
           <button
             onClick={onRestart}
-            className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors px-2.5 py-1 rounded-md hover:bg-rose-50 dark:hover:bg-rose-500/10 font-medium"
+            className="flex items-center gap-1.5 text-xs text-slate-500 hover:text-rose-600 transition-colors px-2.5 py-1 rounded-md hover:bg-rose-50 font-semibold"
             title="Restart Questionnaire"
           >
             <RotateCcw className="w-3.5 h-3.5" />
@@ -79,7 +79,7 @@ export const QuestionnaireView: React.FC<QuestionnaireViewProps> = ({
         </div>
 
         {/* Dynamic Glowing Progress Bar */}
-        <div className="w-full h-2.5 rounded-full bg-slate-200 dark:bg-slate-800/80 overflow-hidden border border-slate-300/50 dark:border-slate-700/50 relative shadow-inner">
+        <div className="w-full h-2.5 rounded-full bg-slate-200 overflow-hidden border border-slate-300/60 relative shadow-inner">
           <div
             className="h-full bg-gradient-to-r from-indigo-600 via-cyan-500 to-emerald-500 rounded-full transition-all duration-500 ease-out shadow-sm"
             style={{ width: `${progressPercent}%` }}
@@ -101,7 +101,7 @@ export const QuestionnaireView: React.FC<QuestionnaireViewProps> = ({
                     ? 'bg-indigo-400'
                     : idx < currentIndex
                     ? 'bg-slate-400'
-                    : 'bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700'
+                    : 'bg-slate-200 border border-slate-300'
                 }`}
                 title={`Step ${idx + 1}`}
               />
@@ -112,38 +112,38 @@ export const QuestionnaireView: React.FC<QuestionnaireViewProps> = ({
       </div>
 
       {/* 3D Glass Question Card */}
-      <div className="glass-panel rounded-3xl p-6 sm:p-10 shadow-xl relative overflow-hidden transition-all duration-300 border border-slate-200/90 dark:border-indigo-500/30">
+      <div className="glass-panel rounded-3xl p-6 sm:p-10 shadow-xl relative overflow-hidden transition-all duration-300 border border-slate-200/90">
         
         {/* Soft Ambient Corner Auras */}
-        <div className="absolute -top-24 -right-24 w-60 h-60 bg-indigo-200/40 dark:bg-indigo-500/15 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-24 -left-24 w-60 h-60 bg-cyan-200/30 dark:bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -top-24 -right-24 w-60 h-60 bg-indigo-200/40 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-24 -left-24 w-60 h-60 bg-cyan-200/30 rounded-full blur-3xl pointer-events-none" />
 
         {/* Question Header: 3D Memory Book Illustration + Step Tag */}
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-3">
             <BookIllustration type={currentQuestion.iconName} size="md" />
             <div className="flex flex-col">
-              <span className="text-[11px] uppercase tracking-wider font-bold text-indigo-600 dark:text-indigo-400">
+              <span className="text-[11px] uppercase tracking-wider font-bold text-indigo-600">
                 {language === 'en' ? 'Slam Book Memory' : 'স্মৃতি ডায়রি'}
               </span>
-              <span className="text-xs text-slate-500 dark:text-slate-400">
+              <span className="text-xs text-slate-500 font-medium">
                 {language === 'en' ? `Question ${currentIndex + 1} of ${totalSteps}` : `প্রশ্ন ${currentIndex + 1} / ${totalSteps}`}
               </span>
             </div>
           </div>
 
-          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-300 shadow-sm">
+          <div className="flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-slate-100 border border-slate-200 text-xs font-bold text-slate-700 shadow-sm">
             <span>{language === 'en' ? 'Step' : 'ধাপ'} {currentIndex + 1}</span>
           </div>
         </div>
 
         {/* Question Title */}
-        <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white mb-3 tracking-tight leading-snug">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-slate-900 mb-3 tracking-tight leading-snug">
           {currentQuestion.title[language]}
         </h2>
 
         {/* Hint / Subtitle */}
-        <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
+        <p className="text-sm sm:text-base text-slate-600 mb-8 leading-relaxed font-normal">
           {currentQuestion.hint[language]}
         </p>
 
@@ -156,14 +156,14 @@ export const QuestionnaireView: React.FC<QuestionnaireViewProps> = ({
             onKeyDown={handleKeyDown}
             placeholder={currentQuestion.placeholder[language]}
             autoFocus
-            className="w-full px-5 py-4 sm:py-4.5 pr-28 rounded-2xl bg-white dark:bg-slate-900/90 border-2 border-slate-200 dark:border-indigo-500/30 focus:border-indigo-600 dark:focus:border-cyan-400 focus:ring-4 focus:ring-indigo-100 dark:focus:ring-cyan-500/20 text-slate-900 dark:text-white placeholder:text-slate-400 text-base sm:text-lg transition-all duration-200 outline-none shadow-sm"
+            className="w-full px-5 py-4 sm:py-4.5 pr-28 rounded-2xl bg-white border-2 border-slate-300 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-100 text-slate-900 placeholder:text-slate-400 text-base sm:text-lg transition-all duration-200 outline-none shadow-sm font-medium"
           />
 
           {/* Mask / Unmask Button */}
           <button
             type="button"
             onClick={() => setIsMasked(!isMasked)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 px-2.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-semibold flex items-center gap-1.5 transition-colors border border-slate-200 dark:border-slate-700"
+            className="absolute right-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold flex items-center gap-1.5 transition-colors border border-slate-200 shadow-sm"
             title={isMasked ? tStepper.showInput[language] : tStepper.hideInput[language]}
           >
             {isMasked ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
@@ -174,20 +174,20 @@ export const QuestionnaireView: React.FC<QuestionnaireViewProps> = ({
         </div>
 
         {/* Transient privacy & skip note */}
-        <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-8 px-1">
+        <div className="flex items-center justify-between text-xs text-slate-500 mb-8 px-1 font-medium">
           <span>{tStepper.privacyNotice[language]}</span>
         </div>
 
         {/* Action Buttons: Back, Skip, Next */}
-        <div className="flex flex-col-reverse sm:flex-row items-center justify-between gap-3 pt-5 border-t border-slate-100 dark:border-slate-800/80">
+        <div className="flex flex-col-reverse sm:flex-row items-center justify-between gap-3 pt-5 border-t border-slate-100">
           
           <div className="flex items-center gap-2 w-full sm:w-auto">
-            {/* Back Button (disabled on step 0) */}
+            {/* Back Button */}
             {currentIndex > 0 && (
               <button
                 type="button"
                 onClick={onBack}
-                className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-white dark:bg-slate-800/80 hover:bg-slate-50 dark:hover:bg-slate-700/80 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-slate-900 text-sm font-semibold transition-all duration-200 shadow-sm"
+                className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 hover:text-slate-900 text-sm font-bold transition-all duration-200 shadow-sm"
               >
                 <ArrowLeft className="w-4 h-4" />
                 <span>{tStepper.backBtn[language]}</span>
@@ -198,7 +198,7 @@ export const QuestionnaireView: React.FC<QuestionnaireViewProps> = ({
             <button
               type="button"
               onClick={onSkip}
-              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-800/40 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700/60 text-slate-600 dark:text-slate-400 hover:text-indigo-600 text-sm font-semibold transition-all duration-200"
+              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-600 hover:text-indigo-600 text-sm font-bold transition-all duration-200"
               title="Skip this question"
             >
               <FastForward className="w-4 h-4 text-slate-500" />
@@ -221,7 +221,7 @@ export const QuestionnaireView: React.FC<QuestionnaireViewProps> = ({
       </div>
 
       {/* Helpful reassurance footer */}
-      <div className="mt-6 text-center text-xs text-slate-500 dark:text-slate-400">
+      <div className="mt-6 text-center text-xs text-slate-500 font-medium">
         {tStepper.optionalNote[language]}
       </div>
 

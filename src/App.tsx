@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Background3D } from './components/Background3D';
 import { Header } from './components/Header';
 import { LandingView } from './components/LandingView';
@@ -13,26 +13,9 @@ import { evaluatePasswordStrength } from './lib/strength';
 export const App: React.FC = () => {
   const [step, setStep] = useState<AppStep>('landing');
   const [language, setLanguage] = useState<Language>('en');
-  const [isDark, setIsDark] = useState<boolean>(false); // Default to bright light theme
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [answers, setAnswers] = useState<UserAnswers>({});
   const [passwords, setPasswords] = useState<GeneratedPasswordItem[]>([]);
-
-  // Sync dark class on root document
-  useEffect(() => {
-    const root = document.documentElement;
-    if (isDark) {
-      root.classList.add('dark');
-      root.classList.remove('light');
-    } else {
-      root.classList.remove('dark');
-      root.classList.add('light');
-    }
-  }, [isDark]);
-
-  const toggleTheme = () => {
-    setIsDark((prev) => !prev);
-  };
 
   const toggleLanguage = () => {
     setLanguage((prev) => (prev === 'en' ? 'bn' : 'en'));
@@ -108,17 +91,15 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-[#06080e] text-slate-800 dark:text-slate-100 flex flex-col relative selection:bg-indigo-500/20 selection:text-indigo-700 transition-colors duration-300">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col relative selection:bg-indigo-500/20 selection:text-indigo-700">
       
       {/* Interactive 3D Canvas Background */}
-      <Background3D isDark={isDark} />
+      <Background3D />
 
       {/* Main Global Header */}
       <Header
         language={language}
-        isDark={isDark}
         onToggleLanguage={toggleLanguage}
-        onToggleTheme={toggleTheme}
         onLogoClick={handleStartOver}
       />
 
@@ -164,15 +145,15 @@ export const App: React.FC = () => {
         )}
       </main>
 
-      {/* Minimalist Cyber Footer */}
-      <footer className="relative z-10 py-6 text-center text-xs text-slate-500 dark:text-slate-400 border-t border-slate-200/80 dark:border-slate-900/80">
-        <div className="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+      {/* Minimalist Light Footer */}
+      <footer className="relative z-10 py-6 text-center text-xs text-slate-500 border-t border-slate-200/90">
+        <div className="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3 font-medium">
           <p>
             {language === 'en'
               ? 'CryptaVault 3D — Client-side privacy-first AI password synthesis.'
               : 'ক্রিপ্টাভল্ট ৩ডি — ক্লায়েন্ট-সাইড প্রাইভেসিবান্ধব এআই পাসওয়ার্ড জেনারেটর।'}
           </p>
-          <div className="flex items-center gap-4 text-slate-500 font-medium">
+          <div className="flex items-center gap-4 text-slate-600">
             <span>Web Crypto CSPRNG</span>
             <span>•</span>
             <span>Zero Tracking</span>

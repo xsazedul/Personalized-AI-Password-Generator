@@ -55,21 +55,21 @@ export const ProcessingView: React.FC<ProcessingViewProps> = ({ language, onComp
       {/* 3D Hologram Spinner Core */}
       <div className="relative w-44 h-44 sm:w-52 sm:h-52 mb-8 flex items-center justify-center">
         
-        {/* Outer Pulsing Aura */}
-        <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-indigo-300/40 via-sky-300/30 to-pink-300/30 dark:from-indigo-600/30 dark:to-cyan-500/30 blur-2xl animate-pulse" />
+        {/* Outer Pulsing Aura (Soft Pastel) */}
+        <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-indigo-200/60 via-sky-200/50 to-pink-200/50 blur-2xl animate-pulse" />
 
         {/* 3D Ring 1 - Outer Clockwise */}
-        <div className="absolute inset-0 rounded-full border-2 border-dashed border-indigo-400 dark:border-indigo-500/40 animate-spin-slow" />
+        <div className="absolute inset-0 rounded-full border-2 border-dashed border-indigo-400 animate-spin-slow" />
 
         {/* 3D Ring 2 - Reverse Counter-Clockwise */}
         <div
-          className="absolute inset-3 rounded-full border-2 border-cyan-500 dark:border-cyan-400/50"
+          className="absolute inset-3 rounded-full border-2 border-cyan-500"
           style={{ animation: 'spin 8s linear infinite reverse' }}
         />
 
         {/* 3D Ring 3 - Tilted Ellipse Effect */}
         <div
-          className="absolute inset-6 rounded-full border-2 border-indigo-500/40"
+          className="absolute inset-6 rounded-full border-2 border-indigo-500/50"
           style={{
             transform: 'rotateX(60deg) rotateZ(45deg)',
             animation: 'spin 6s linear infinite'
@@ -77,9 +77,9 @@ export const ProcessingView: React.FC<ProcessingViewProps> = ({ language, onComp
         />
 
         {/* Center Neural Node with Memory Book Icon */}
-        <div className="relative w-24 h-24 rounded-3xl bg-white dark:bg-slate-900 border-2 border-indigo-500/60 dark:border-cyan-400/80 shadow-xl flex flex-col items-center justify-center backdrop-blur-xl">
-          <BookOpen className="w-8 h-8 text-indigo-600 dark:text-cyan-400 animate-bounce" />
-          <span className="text-xs font-mono-pwd font-extrabold text-slate-800 dark:text-white mt-1">
+        <div className="relative w-24 h-24 rounded-3xl bg-white border-2 border-indigo-500 shadow-xl flex flex-col items-center justify-center backdrop-blur-xl">
+          <BookOpen className="w-8 h-8 text-indigo-600 animate-bounce" />
+          <span className="text-xs font-mono-pwd font-extrabold text-slate-900 mt-1">
             {percent}%
           </span>
         </div>
@@ -87,22 +87,22 @@ export const ProcessingView: React.FC<ProcessingViewProps> = ({ language, onComp
       </div>
 
       {/* Main Title & Subtitle */}
-      <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mb-2 tracking-tight">
+      <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-2 tracking-tight">
         {UI_TEXT.processing.mainTitle[language]}
       </h2>
-      <p className="text-sm text-slate-600 dark:text-slate-400 mb-8 max-w-md font-medium">
+      <p className="text-sm text-slate-600 mb-8 max-w-md font-medium">
         {UI_TEXT.processing.subtitle[language]}
       </p>
 
       {/* Active Stage Banner */}
-      <div className="w-full glass-panel rounded-2xl p-5 mb-6 border border-slate-200/90 dark:border-cyan-500/30 shadow-lg">
-        <div className="flex items-center justify-center gap-3 text-indigo-700 dark:text-cyan-300 font-bold text-base sm:text-lg">
-          <Sparkles className="w-5 h-5 text-indigo-600 dark:text-cyan-400 animate-spin-slow" />
+      <div className="w-full glass-panel rounded-2xl p-5 mb-6 border border-slate-200/90 shadow-lg">
+        <div className="flex items-center justify-center gap-3 text-indigo-700 font-bold text-base sm:text-lg">
+          <Sparkles className="w-5 h-5 text-indigo-600 animate-spin-slow" />
           <span>{stages[currentStageIndex][language]}</span>
         </div>
 
         {/* Progress bar */}
-        <div className="w-full h-2.5 rounded-full bg-slate-200 dark:bg-slate-800 mt-4 overflow-hidden">
+        <div className="w-full h-2.5 rounded-full bg-slate-200 mt-4 overflow-hidden shadow-inner">
           <div
             className="h-full bg-gradient-to-r from-indigo-600 via-cyan-500 to-emerald-500 transition-all duration-150 ease-out"
             style={{ width: `${percent}%` }}
@@ -110,22 +110,22 @@ export const ProcessingView: React.FC<ProcessingViewProps> = ({ language, onComp
         </div>
       </div>
 
-      {/* Terminal Telemetry Logs (Crisp & High-Contrast) */}
-      <div className="w-full rounded-2xl bg-slate-900 text-slate-200 border border-slate-800 p-4 text-left font-mono-pwd text-[11px] space-y-1.5 shadow-md">
-        <div className="flex items-center justify-between text-slate-400 text-[10px] pb-2 border-b border-slate-800 font-sans font-semibold">
-          <span className="flex items-center gap-1.5">
-            <Cpu className="w-3.5 h-3.5 text-indigo-400" />
+      {/* Terminal Telemetry Logs (Bright, Clean White Card) */}
+      <div className="w-full rounded-2xl bg-white text-slate-800 border-2 border-indigo-100 p-4 text-left font-mono-pwd text-[11px] space-y-1.5 shadow-md">
+        <div className="flex items-center justify-between text-slate-500 text-[10px] pb-2 border-b border-slate-100 font-sans font-bold">
+          <span className="flex items-center gap-1.5 text-indigo-700">
+            <Cpu className="w-3.5 h-3.5 text-indigo-600" />
             LIVE CSPRNG VAULT TELEMETRY
           </span>
-          <span className="text-emerald-400 flex items-center gap-1">
-            <CheckCircle2 className="w-2.5 h-2.5" /> SECURE
+          <span className="text-emerald-700 font-bold flex items-center gap-1">
+            <CheckCircle2 className="w-2.5 h-2.5 text-emerald-600" /> SECURE
           </span>
         </div>
 
         <div className="h-16 overflow-hidden flex flex-col justify-end">
           {logs.slice(0, activeLogIndex + 1).slice(-3).map((log, i) => (
-            <div key={i} className="text-slate-300 truncate">
-              <span className="text-cyan-400">&gt; </span>
+            <div key={i} className="text-slate-700 font-semibold truncate">
+              <span className="text-indigo-600 font-bold">&gt; </span>
               {log}
             </div>
           ))}

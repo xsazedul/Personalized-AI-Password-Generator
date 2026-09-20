@@ -106,15 +106,15 @@ export const ResultView: React.FC<ResultViewProps> = ({
       
       {/* Top Header */}
       <div className="text-center mb-10">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-xs sm:text-sm font-semibold mb-3 shadow-sm">
-          <ShieldCheck className="w-4 h-4" />
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs sm:text-sm font-bold mb-3 shadow-sm">
+          <ShieldCheck className="w-4 h-4 text-emerald-600" />
           <span>{language === 'en' ? 'CSPRNG Hardened • Cryptographically Verified' : 'সিএসপিআরএনজি সুরক্ষিত • গাণিতিকভাবে পরীক্ষিত'}</span>
         </div>
 
-        <h1 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight mb-3">
+        <h1 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight mb-3">
           {t.heading[language]}
         </h1>
-        <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed font-normal">
           {t.subheading[language]}
         </p>
       </div>
@@ -136,23 +136,23 @@ export const ResultView: React.FC<ResultViewProps> = ({
           return (
             <div
               key={item.id}
-              className="glass-panel glass-panel-hover rounded-3xl p-5 sm:p-7 border border-slate-200/90 dark:border-indigo-500/25 relative overflow-hidden transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="glass-panel glass-panel-hover rounded-3xl p-5 sm:p-7 border border-slate-200/90 relative overflow-hidden transition-all duration-300 shadow-xl"
             >
               
               {/* Card Header: Strategy Badge + Index + Strength Indicator */}
-              <div className="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-slate-100 dark:border-slate-800/80">
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-slate-100">
                 <div className="flex items-center gap-2.5">
-                  <span className="w-7 h-7 rounded-xl bg-indigo-50 dark:bg-indigo-500/20 border border-indigo-200 dark:border-indigo-500/40 text-indigo-700 dark:text-indigo-300 text-xs font-bold flex items-center justify-center font-mono-pwd shadow-sm">
+                  <span className="w-7 h-7 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-bold flex items-center justify-center font-mono-pwd shadow-sm">
                     #{index + 1}
                   </span>
                   <div className="flex items-center gap-2">
-                    <BookOpen className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
-                    <span className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white tracking-wide">
+                    <BookOpen className="w-4 h-4 text-indigo-600" />
+                    <span className="text-xs sm:text-sm font-bold text-slate-900 tracking-wide">
                       {item.strategyName[language]}
                     </span>
                   </div>
                   {item.isEdited && (
-                    <span className="text-[10px] px-2 py-0.5 rounded-md bg-amber-50 dark:bg-amber-500/15 border border-amber-200 dark:border-amber-500/30 text-amber-700 dark:text-amber-300 font-bold">
+                    <span className="text-[10px] px-2 py-0.5 rounded-md bg-amber-50 border border-amber-200 text-amber-700 font-bold">
                       {language === 'en' ? 'Edited' : 'এডিট করা'}
                     </span>
                   )}
@@ -177,7 +177,7 @@ export const ResultView: React.FC<ResultViewProps> = ({
                   </div>
                   
                   {/* Estimated Crack Time Pill */}
-                  <span className="hidden sm:inline-block text-[11px] text-slate-500 dark:text-slate-400 font-mono-pwd font-semibold">
+                  <span className="hidden sm:inline-block text-[11px] text-slate-500 font-mono-pwd font-semibold">
                     {liveStrength.crackTimeDisplay[language]}
                   </span>
                 </div>
@@ -193,7 +193,7 @@ export const ResultView: React.FC<ResultViewProps> = ({
                         value={editValue}
                         onChange={(e) => setEditValue(e.target.value)}
                         autoFocus
-                        className="w-full px-4 py-3.5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-indigo-600 focus:border-cyan-500 text-slate-900 dark:text-white font-mono-pwd text-base sm:text-lg tracking-wider outline-none shadow-sm"
+                        className="w-full px-4 py-3.5 rounded-2xl bg-white border-2 border-indigo-600 focus:border-cyan-500 text-slate-900 font-mono-pwd text-base sm:text-lg tracking-wider outline-none shadow-sm"
                       />
                     </div>
 
@@ -208,7 +208,7 @@ export const ResultView: React.FC<ResultViewProps> = ({
                         </button>
                         <button
                           onClick={cancelEdit}
-                          className="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold transition-colors border border-slate-200 dark:border-slate-700"
+                          className="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-colors border border-slate-200"
                         >
                           {t.cancelBtn[language]}
                         </button>
@@ -220,7 +220,7 @@ export const ResultView: React.FC<ResultViewProps> = ({
                             onUpdatePassword(item.id, item.originalGenerated);
                             cancelEdit();
                           }}
-                          className="text-xs text-indigo-600 dark:text-indigo-400 hover:underline font-medium"
+                          className="text-xs text-indigo-600 hover:underline font-bold"
                         >
                           {t.resetEditBtn[language]}
                         </button>
@@ -229,18 +229,18 @@ export const ResultView: React.FC<ResultViewProps> = ({
 
                     {/* Warning if edited password becomes weak */}
                     {(isWeak || isModerate) && (
-                      <div className="flex items-start gap-2 p-3 rounded-xl bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/30 text-amber-800 dark:text-amber-300 text-xs mt-2">
-                        <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5 text-amber-600 dark:text-amber-400" />
+                      <div className="flex items-start gap-2 p-3 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 text-xs mt-2">
+                        <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5 text-amber-600" />
                         <span>{t.weakWarning[language]}</span>
                       </div>
                     )}
                   </div>
                 ) : (
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 sm:p-4 rounded-2xl bg-slate-50/90 dark:bg-slate-950/80 border border-slate-200/90 dark:border-slate-800/90 group shadow-sm">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 sm:p-4 rounded-2xl bg-slate-50 border border-slate-200 group shadow-sm">
                     
                     {/* Password String with Mask Toggle */}
                     <div className="flex items-center gap-3 overflow-hidden">
-                      <span className="font-mono-pwd text-base sm:text-xl font-bold tracking-wider text-slate-900 dark:text-slate-100 select-all break-all">
+                      <span className="font-mono-pwd text-base sm:text-xl font-bold tracking-wider text-slate-900 select-all break-all">
                         {isRevealed
                           ? item.password
                           : '•'.repeat(Math.min(item.password.length, 18))}
@@ -253,7 +253,7 @@ export const ResultView: React.FC<ResultViewProps> = ({
                       {/* Reveal Toggle */}
                       <button
                         onClick={() => toggleReveal(item.id)}
-                        className="p-2.5 rounded-xl bg-white dark:bg-slate-800/70 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors border border-slate-200 dark:border-slate-700 shadow-sm"
+                        className="p-2.5 rounded-xl bg-white hover:bg-slate-100 text-slate-600 hover:text-slate-900 transition-colors border border-slate-200 shadow-sm"
                         title={isRevealed ? 'Hide' : 'Reveal'}
                         aria-label="Toggle password visibility"
                       >
@@ -263,7 +263,7 @@ export const ResultView: React.FC<ResultViewProps> = ({
                       {/* Edit Button */}
                       <button
                         onClick={() => startEdit(item)}
-                        className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white dark:bg-slate-800/70 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white text-xs font-bold transition-colors border border-slate-200 dark:border-slate-700 shadow-sm"
+                        className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white hover:bg-slate-100 text-slate-700 hover:text-slate-900 text-xs font-bold transition-colors border border-slate-200 shadow-sm"
                         title="Edit password"
                       >
                         <Edit3 className="w-3.5 h-3.5 text-indigo-600" />
@@ -303,23 +303,23 @@ export const ResultView: React.FC<ResultViewProps> = ({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
                 
                 {/* 1. Why this password? */}
-                <div className="rounded-2xl p-4 bg-slate-50/70 dark:bg-slate-900/60 border border-slate-200/70 dark:border-slate-800/80">
-                  <div className="flex items-center gap-2 text-xs font-bold text-indigo-700 dark:text-indigo-300 mb-2">
-                    <HelpCircle className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+                <div className="rounded-2xl p-4 bg-indigo-50/40 border border-indigo-100/70">
+                  <div className="flex items-center gap-2 text-xs font-bold text-indigo-800 mb-2">
+                    <HelpCircle className="w-4 h-4 text-indigo-600" />
                     <span>{t.whyHeading[language]}</span>
                   </div>
-                  <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
+                  <p className="text-xs text-slate-700 leading-relaxed font-normal">
                     {item.why[language]}
                   </p>
                 </div>
 
                 {/* 2. How to remember it? */}
-                <div className="rounded-2xl p-4 bg-slate-50/70 dark:bg-slate-900/60 border border-slate-200/70 dark:border-slate-800/80">
-                  <div className="flex items-center gap-2 text-xs font-bold text-cyan-700 dark:text-cyan-300 mb-2">
-                    <Brain className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
+                <div className="rounded-2xl p-4 bg-sky-50/40 border border-sky-100/70">
+                  <div className="flex items-center gap-2 text-xs font-bold text-sky-800 mb-2">
+                    <Brain className="w-4 h-4 text-sky-600" />
                     <span>{t.howHeading[language]}</span>
                   </div>
-                  <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-2.5 font-medium">
+                  <p className="text-xs text-slate-700 leading-relaxed mb-2.5 font-normal">
                     {item.mnemonic[language]}
                   </p>
                   
@@ -328,7 +328,7 @@ export const ResultView: React.FC<ResultViewProps> = ({
                     {item.memoryChunks[language].map((chunk, cIdx) => (
                       <span
                         key={cIdx}
-                        className="text-[10px] font-mono-pwd px-2 py-0.5 rounded-md bg-indigo-50 dark:bg-cyan-500/10 border border-indigo-200 dark:border-cyan-500/25 text-indigo-700 dark:text-cyan-300 font-semibold shadow-sm"
+                        className="text-[10px] font-mono-pwd px-2.5 py-0.5 rounded-md bg-white border border-sky-200 text-sky-800 font-bold shadow-sm"
                       >
                         {chunk}
                       </span>
@@ -344,12 +344,12 @@ export const ResultView: React.FC<ResultViewProps> = ({
       </div>
 
       {/* Bottom Global Actions */}
-      <div className="glass-panel rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-4 border border-slate-200/90 dark:border-indigo-500/30 shadow-lg">
+      <div className="glass-panel rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-4 border border-slate-200/90 shadow-lg">
         
         {/* Left: Start Over */}
         <button
           onClick={onStartOver}
-          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-rose-50 dark:bg-rose-500/10 hover:bg-rose-100 dark:hover:bg-rose-500/20 border border-rose-200 dark:border-rose-500/30 text-rose-700 dark:text-rose-300 text-sm font-bold transition-all shadow-sm"
+          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-rose-50 hover:bg-rose-100 border border-rose-200 text-rose-700 text-sm font-bold transition-all shadow-sm"
         >
           <RotateCcw className="w-4 h-4" />
           <span>{t.startOverBtn[language]}</span>
@@ -360,9 +360,9 @@ export const ResultView: React.FC<ResultViewProps> = ({
           
           <button
             onClick={onToggleLanguage}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-3 rounded-2xl bg-white dark:bg-slate-800/80 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 text-sm font-semibold transition-all shadow-sm"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-3 rounded-2xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-sm font-bold transition-all shadow-sm"
           >
-            <Globe className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
+            <Globe className="w-4 h-4 text-cyan-600" />
             <span>{language === 'en' ? 'বাংলায় দেখুন' : 'View in English'}</span>
           </button>
 
