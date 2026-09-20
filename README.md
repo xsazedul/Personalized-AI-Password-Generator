@@ -1,28 +1,46 @@
-# CryptaVault 3D — AI-Powered Personalized Password Generator
+# CryptaVault 3D — Personalized AI Password Generator
 
-A modern, interactive 3D-styled web application that generates strong, memorable, and personalized passwords without requiring an account or registration.
+> **"Answer a few nostalgic questions. Get 5 unbreakable passwords you can actually remember."**
+
+An interactive, modern 3D-styled web application built with React, TypeScript, and Tailwind CSS. It helps users generate strong, memorable, and personalized passwords based on their nostalgia and memory entries without requiring an account or storing sensitive personal data.
+
+---
+
+## 📸 Application Previews
+
+### 1. Modern Bright 3D Landing Page
+![CryptaVault 3D Landing Page](docs/screenshots/01-landing-page.png)
+
+### 2. Step-by-Step Nostalgic Memory Questionnaire
+![Questionnaire Step](docs/screenshots/02-questionnaire.png)
+
+### 3. Holographic AI Cryptographic Processing Screen
+![Holographic Processing](docs/screenshots/03-processing.png)
+
+### 4. 5 Personalized Password Results & Mnemonics
+![Generated Passwords and Mnemonics](docs/screenshots/04-results.png)
 
 ---
 
 ## 🌟 Key Features
 
-1. **No Account Required**:
+1. **No Account or Registration Required**:
    - Zero registration, zero emails, and zero stored personal data.
    - Everything runs client-side in transient device RAM.
 
 2. **Personalized Nostalgic Questionnaire (8 Steps)**:
-   - Step 1: Your first love (*আপনার প্রথম ভালোবাসা*)
-   - Step 2: Your first secret crush (*আপনার প্রথম গোপন ক্রাশ*)
-   - Step 3: Your favorite classmate (*আপনার প্রিয় সহপাঠী*)
-   - Step 4: Unconfessed classmate crush (*পছন্দ করতেন কিন্তু কখনো বলেননি*)
-   - Step 5: Married crush / secret admiration (*বিবাহিত ক্রাশ বা সেলিব্রিটি*)
-   - Step 6: Body count (*বডি কাউন্ট*)
-   - Step 7: Class 10 roll number (*ক্লাস ১০-এর রোল নম্বর*)
-   - Step 8: Biggest mistake/sin (*জীবনের সবচেয়ে বড় ভুল বা পাপ*)
-   - **Skip Option**: Skip any question at any time with no penalty (compensated with increased mathematical entropy).
-   - **Privacy Mask Toggle**: Eye icon to mask or reveal your typing in public.
+   - **Step 1**: Your first love (*আপনার প্রথম ভালোবাসা*)
+   - **Step 2**: Your first secret crush (*আপনার প্রথম গোপন ক্রাশ*)
+   - **Step 3**: Your favorite classmate (*আপনার প্রিয় সহপাঠী*)
+   - **Step 4**: Unconfessed classmate crush (*পছন্দ করতেন কিন্তু কখনো বলেননি*)
+   - **Step 5**: Married crush / secret admiration (*বিবাহিত ব্যক্তি বা সেলিব্রিটি*)
+   - **Step 6**: Body count (*বডি কাউন্ট*)
+   - **Step 7**: Class 10 roll number (*ক্লাস ১০-এর রোল নম্বর*)
+   - **Step 8**: Biggest mistake/sin (*জীবনের সবচেয়ে বড় ভুল বা পাপ*)
+   - **Skip Option**: Skip any question at any time with zero penalty (compensated with increased mathematical entropy).
+   - **Privacy Mask Toggle**: Eye icon to mask typed input into bullets in public.
 
-3. **Bilingual Support (🇧🇩 বাংলা & 🇬🇧 English)**:
+3. **Complete Bilingual Support (🇧🇩 বাংলা & 🇬🇧 English)**:
    - Full toggle switch in the top-right header and footer.
    - All questions, UI, buttons, hints, "Why this password?", "How to remember it?", and strength warnings are localized naturally.
 
@@ -40,7 +58,7 @@ A modern, interactive 3D-styled web application that generates strong, memorable
    - **Password 5: High-Entropy Secure Vault Pattern (16+ chars)**
 
 6. **Interactive Features per Password**:
-   - **1-Click Copy**: Visual feedback badge + clipboard write.
+   - **1-Click Copy**: Visual feedback badge + direct clipboard write.
    - **Inline Edit**: Modify any password with real-time strength re-evaluation and warning banner if weakened.
    - **Password Strength Meter**: Calculated with `zxcvbn` (Weak, Moderate, Strong, Very Strong) with estimated crack time.
    - **Why was this password generated?**: Simple explanation without exposing original secrets.
@@ -50,26 +68,32 @@ A modern, interactive 3D-styled web application that generates strong, memorable
 
 7. **Modern 3D Cyber UI / UX**:
    - Interactive 3D particle constellation canvas responding to mouse and touch movement.
-   - Glassmorphism, soft neon glows, 3D card tilt elevation.
-   - Futuristic holographic AI scanner animation with telemetry console stream.
+   - Glassmorphism, soft glows, 3D card tilt elevation.
+   - 3D memory book illustrations for each questionnaire step and hero showcase.
    - Fully responsive for mobile phones, tablets, and desktops.
 
 ---
 
 ## 🚀 Quick Start
 
-### 1. Install Dependencies
+### 1. Clone the Repository
+```bash
+git clone https://github.com/xsazedul/Personalized-AI-Password-Generator.git
+cd Personalized-AI-Password-Generator
+```
+
+### 2. Install Dependencies
 ```bash
 npm install
 ```
 
-### 2. Start Local Development Server
+### 3. Start Local Development Server
 ```bash
 npm run dev
 ```
 Open `http://localhost:3000` in your web browser.
 
-### 3. Build for Production
+### 4. Build for Production
 ```bash
 npm run build
 ```
